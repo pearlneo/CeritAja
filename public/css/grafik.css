@@ -23,7 +23,7 @@
 .period-filter {
     display: flex;
     gap: 4px;
-    background: white;
+    background: var(--card);
     padding: 4px;
     border-radius: 12px;
     border: 1px solid var(--border);

@@ -297,7 +297,7 @@
     display: flex; 
 }
 .modal-box { 
-    background: white; 
+    background: var(--card); 
     border-radius: 20px; 
     padding: 32px; 
     max-width: 380px; 
@@ -721,4 +721,8 @@
     flex: 1; height: 1.5px;
     background: var(--warm-dark);
     margin: 0 8px;
+}
+
+.edit-badge {
+    color: white;
 }
