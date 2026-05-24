@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; width: 100%; }
+
+:root {
+  --sidebar-bg: #2d1b5e;
+  --sidebar-w: 70px; 
+  --accent: #7b52d4;          /* dashboard pakai ini; grafik pakai #a855f7 → seragamkan */
+  --accent-soft: #f3e8ff;
+  --accent-light: #e9d5ff;
+  --page: #f3eeff;
+  --card: #ffffff;
+  --ink: #1e1b4b;
+  --ink-muted: #7c6fa0;
+  --ink-faint: #c5bcd8;
+  --warm: #e9d5ff;
+  --warm-dark: #d8b4fe;
+  --border: rgba(3, 3, 4, 0.1);
+  --radius: 18px;
+  --shadow: 0 2px 8px rgba(28,21,40,0.05), 0 6px 24px rgba(28,21,40,0.05);
+}
+
+body.dark-theme {
+  --page: #0f0f14;
+  --card: #1a1a22;
+  --ink: #f3f4f6;
+  --ink-muted: #b6b1c7;
+  --border: rgba(255,255,255,0.06);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--page);
+  display: flex;
+  min-height: 100vh;
+  color: var(--ink);
+}
+
+/* ── SIDEBAR (identik di kedua halaman) ── */
+.sidebar { 
+    width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 24px 0;            /* di dashboard 20px 0 22px, di grafik 24px 0 → seragamkan */
+    position: fixed;        
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    z-index: 100; 
+}
+.sidebar-logo { 
+    width: 40px;                /* di dashboard 36px, di grafik 40px → seragamkan */
+    height: 40px;               /* di dashboard 36px, di grafik 40px → seragamkan */
+    background: var(--accent);
+    border-radius: 12px;        /* di dashboard 11px, di grafik 12px → seragamkan */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size: 18px;            /* di dashboard 17px, di grafik 18px → seragamkan */
+    color: white; 
+    margin-bottom: 40px;        /* di dashboard 34px, di grafik 40px → seragamkan */
+    /* box-shadow: 0 4px 12px rgba(123,82,212,0.45); hanya ada di dashboard */
+}
+.sidebar-nav {  
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;                   /*di dashboard 4px, di grafik 8px → seragamkan */
+    align-items: center;
+}
+.nav-item {  
+    width: 44px;                /* di dashboard 40px, di grafik 44px → seragamkan */
+    height: 44px;               /* di dashboard 40px, di grafik 44px → seragamkan */    
+    border-radius: 12px;        /* di dashboard 11px, di grafik 12px → seragamkan */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: rgba(255,255,255,0.4);   /* di dashboard rgba(255,255,255,0.28), di grafik rgba(255,255,255,0.4) → seragamkan */
+    font-size: 20px;            /* di dashboard 19px, di grafik 20px → seragamkan */
+    text-decoration: none; 
+    transition: all 0.2s;       /* di dashboard 0.28s, di grafik 0.2s → seragamkan */
+    position: relative;
+}
+.nav-item:hover { 
+    background: rgba(168,85,247,0.25);      /* di dashboard rgba(255,255,255,0.07), di grafik rgba(168,85,247,0.25) → seragamkan */
+    color: white;             /* di dashboard rgba(255,255,255,0.7), di grafik white → seragamkan */
+}
+.nav-item.active {  
+    background: var(--accent); 
+    color: white; 
+    /* box-shadow: 0 3px 10px rgba(123,82,212,0.4); hanya ada di dashboard */
+}
+.nav-item .tip {  
+    position: absolute; 
+    left: 56px;                 /* di dashboard 52px, di grafik 56px → seragamkan */  
+    background: var(--sidebar-bg);      /* di dashboard var(--ink), di grafik var(--sidebar-bg) → seragamkan */
+    color: white;
+    font-size: 12px;            /* di dashboard 11.5px, di grafik 12px → seragamkan */
+    /* font-weight: 500; hanya ada di dashboard */
+    padding: 4px 10px; 
+    border-radius: 6px;         /* di dashboard 7px, di grafik 6px → seragamkan */
+    white-space: nowrap; 
+    opacity: 0; 
+    pointer-events: none;
+    transition: opacity 0.2s;   /* di dashboard 0.14s, di grafik 0.2s → seragamkan */ 
+    /* z-index: 200; hanya ada di dashboard */
+}  /* nama class beda, satukan */
+.nav-item:hover .tip { 
+    opacity: 1; 
+}
+.sidebar-bottom { 
+    margin-top: auto; 
+}
+.logout-btn {  
+    width: 44px;                /* di dashboard 40px, di grafik 44px → seragamkan */
+    height: 44px;               /* di dashboard 40px, di grafik 44px → seragamkan */
+    border-radius: 12px;        /* di dashboard 11px, di grafik 12px → seragamkan */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: rgba(255,255,255,0.4);   /* di dashboard rgba(255,255,255,0.28), di grafik rgba(255,255,255,0.4) → seragamkan */
+    font-size: 20px;            /* di dashboard 19px, di grafik 20px → seragamkan */
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    transition: all 0.2s;       /* di dashboard all 0.16s, di grafik all 0.2s → seragamkan */
+}
+.logout-btn:hover { 
+    background: rgba(239,68,68,0.2);    /* di dashboard rgba(239,68,68,0.15), di grafik rgba(239,68,68,0.2) → seragamkan */
+    color: #fca5a5; 
+}
+
+/* ── MAIN WRAPPER ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  width: calc(100% - var(--sidebar-w));
+}
+
+/* ── CARD (struktur dasar, dipakai di dua halaman) ── */
+.card {  
+    background: var(--card);
+    border-radius: var(--radius);       /* di grafik 20px, di grafik var(--radius) → seragamkan */
+    padding: 22px 24px;        /* di dashboard 22px 24px, di grafik 22px → seragamkan */
+    border: 1px solid var(--border); 
+    /* box-shadow: var(--shadow); hanya ada di dashboard */
+}
+.card-header {  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+.card-title { 
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    /* display: flex;
+    align-items: center;
+    gap: 8px;       hanya ada di dashboard */ 
+}
+
+/* ── STAT CARD (struktur mirip, bisa digeneralisasi) ── */
+.stat-card { 
+    background: var(--card);
+    border-radius: var(--radius);       /* di grafik 16px, di grafik var(--radius) → seragamkan */
+    padding: 16px 18px;                 /* di dashboard 20px 22px, di grafik 16px 18px → seragamkan */  
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    /* display: flex; 
+    align-items: center; 
+    gap: 16px;  hanya ada di dashboard */
+}
+
+/* THEME TOGGLE */
+.theme-toggle{
+    margin-bottom: 14px;
+}
+.change-theme{
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.change-theme:hover{
+    color: white;
+}
